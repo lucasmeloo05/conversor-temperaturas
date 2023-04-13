@@ -22,7 +22,7 @@ def converter_temperatura(tipo_temperatura, temperatura, converter_para):
 while True:
     try:
         # Perguntar ao usuário qual tipo de temperatura deseja escolher para iniciar
-        tipo_temperatura = input('Qual tipo de temperatura deseja escolher?\nCELSIUS [C]\nFAHRENHEIT [F]\nKELVIN [K]\nESCOLHA: ').strip().upper().split(0)
+        tipo_temperatura = input('Qual tipo de temperatura deseja escolher?\nCELSIUS [C]\nFAHRENHEIT [F]\nKELVIN [K]\nESCOLHA: ').strip().upper()
         if tipo_temperatura not in ['C', 'F', 'K']:
             raise ValueError('Tipo de temperatura inválido')
 
