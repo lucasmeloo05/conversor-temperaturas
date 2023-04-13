@@ -22,9 +22,14 @@ def converter_temperatura(tipo_temperatura, temperatura, converter_para):
 while True:
     try:
         # Perguntar ao usuário qual tipo de temperatura deseja escolher para iniciar
-        tipo_temperatura = input('Qual tipo de temperatura deseja escolher?\nCELSIUS [C]\nFAHRENHEIT [F]\nKELVIN [K]\nESCOLHA: ').strip().upper()
-        if tipo_temperatura not in ['C', 'F', 'K']:
-            raise ValueError('Tipo de temperatura inválido')
+        while True:
+            try:
+                tipo_temperatura = input('Qual tipo de temperatura deseja escolher?\nCELSIUS [C]\nFAHRENHEIT [F]\nKELVIN [K]\nESCOLHA: ').strip().upper()[0]
+                if tipo_temperatura not in ['C', 'F', 'K']:
+                    raise ValueError('Tipo de temperatura inválido')
+                break
+            except ValueError:
+                print('Por favor, digite uma opção válida')
 
         # Loop para garantir que o usuário digite um número para a temperatura
         while True:
@@ -38,19 +43,26 @@ while True:
                 print('Por favor, digite um número válido para a temperatura')
 
         # Perguntar para qual tipo de temperatura o usuário deseja converter
-        converter_para = input('Para qual temperatura deseja converter?\nCELSIUS [C]\nFAHRENHEIT [F]\nKELVIN [K]\nESCOLHA: ').strip().upper()
-        if converter_para not in ['C', 'F', 'K']:
-            raise ValueError('Tipo de temperatura inválido')
+        while True:
+            try:
+                converter_para = input('Para qual temperatura deseja converter?\nCELSIUS [C]\nFAHRENHEIT [F]\nKELVIN [K]\nESCOLHA: ').strip().upper()[0]
+                if tipo_temperatura == converter_para:
+                    print('Mesmo tipo de temperatura, tente novamente')
+                if converter_para not in ['C', 'F', 'K']:
+                    raise ValueError('Tipo de temperatura inválido')
+                break
+            except ValueError:
+                print('Por favor, digite uma opção válida')
 
         # Resposta do programa
         temperatura_convertida = converter_temperatura(tipo_temperatura, temperatura, converter_para)
         print(f'{temperatura:.1f}° {tipo_temperatura} correspondem a {temperatura_convertida:.1f}° {converter_para}')
     except ValueError as e:
         print(f'Entrada inválida: {e}')
-    
+
     # Perguntar ao usuário se ele deseja fazer uma nova conversão ou encerrar o aplicativo
     while True:
-        continuar = str(input('Deseja continuar? [S/N]: ')).strip().upper()
+        continuar = str(input('Deseja continuar? [S/N]: ')).strip().upper()[0]
         if continuar not in ['S', 'N']:
             print('Entrada inválida, tente novamente')
         else:
