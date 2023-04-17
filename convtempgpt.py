@@ -1,3 +1,6 @@
+print('-'*30)
+print('CONVERSOR DE TEMPERATURAS')
+print('-'*30)
 # Função para converter a temperatura de um tipo para outro
 def converter_temperatura(tipo_temperatura, temperatura, converter_para):
     if tipo_temperatura == 'C': # Se a temperatura estiver em Celsius
